@@ -1,10 +1,27 @@
 import React from 'react'
 
-const CustomInput = () => {
+import styles from '../styles'
+
+const regex = /^[A-Za-z0-9]+$/
+
+const CustomInput = ({ label, placeholder, value, handleValueChange }) => {
     return (
-        <div>
-            CustomInput
-        </div>
+        <>
+            <label htmlFor='name' className={styles.label}>
+                {label}
+            </label>
+            <input 
+                type="text"
+                placeholder={placeholder}
+                value={value}
+                onChange={(e) => {
+                    if(e.target.value === '' || regex.text(e.target.value)) {
+                        handleValueChange(e.target.value)
+                    }
+                }}
+                className={styles.input}
+            />
+        </>
     )
 }
 
