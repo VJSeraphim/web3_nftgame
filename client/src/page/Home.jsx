@@ -4,7 +4,7 @@ import { PageHOC, CustomInput, CustomButton } from '../components';
 import { useGlobalContext } from '../context';
 
 const Home = () => {
-  const { contract, walletAddress } = useGlobalContext()
+  const { contract, walletAddress, setShowAlert } = useGlobalContext()
   const [playerName, setPlayerName] = useState('')
 
   const handleClick = async() => {
@@ -12,6 +12,11 @@ const Home = () => {
       const playerExists = await contract.isPlayer(walletAddress)
       if (!playerExists) {
         await contract.registerPlayer(playerName, playerName)
+        setShowAlert({
+          status: 'true',
+          type: 'info',
+          message: `${playerName} is currently Opening Warp Rift...`
+        })
       }
     } catch (error) {
       alert(error)
