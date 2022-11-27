@@ -13,13 +13,17 @@ const Home = () => {
       if (!playerExists) {
         await contract.registerPlayer(playerName, playerName)
         setShowAlert({
-          status: 'true',
+          status: true,
           type: 'info',
           message: `${playerName} is currently Opening Warp Rift...`
         })
       }
     } catch (error) {
-      alert(error)
+      setShowAlert({
+        status: true,
+        type: 'failure',
+        message: "Oops... Something Went Wrong!"
+      })
     }
   }
 
