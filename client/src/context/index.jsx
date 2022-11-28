@@ -4,6 +4,7 @@ import Web3Modal from 'web3modal'
 import { useNavigate } from 'react-router-dom'
 
 import { ABI, ADDRESS } from '../contract'
+import { createEventListeners } from './createEventListeners'
 
 const GlobalContext = createContext()
 
@@ -31,6 +32,8 @@ export const GlobalContextProvider = ({ children }) => {
         const timer = setTimeout(() => {
             setShowAlert({ status: false, type: 'info', message: ''})
         }, [5000])
+
+        return () => clearTimeout(timer)
       }
     }, [showAlert])
     
@@ -48,6 +51,18 @@ export const GlobalContextProvider = ({ children }) => {
         }
 
         setSmartContractAndProvider()
+    }, [])
+
+    useEffect(() => {
+      if(contract) {
+        createEventListeners({
+            navigate,
+            contract, 
+            provider, 
+            walletAddress, 
+            setShowAlert
+        })
+      }
     }, [])
 
     return (
