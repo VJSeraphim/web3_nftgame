@@ -7,7 +7,7 @@ const regex = /^[A-Za-z0-9]+$/
 const CustomInput = ({ label, placeholder, value, handleValueChange }) => {
     return (
         <>
-            <label htmlFor='name' className={styles.label}>
+            <label htmlFor="name" className={styles.label}>
                 {label}
             </label>
             <input
@@ -15,7 +15,7 @@ const CustomInput = ({ label, placeholder, value, handleValueChange }) => {
                 placeholder={placeholder}
                 value={value}
                 onChange={(e) => {
-                    if(e.target.value === '' || regex.text(e.target.value)) handleValueChange(e.target.value)
+                    if(e.target.value === '' || regex.test(e.target.value)) handleValueChange(e.target.value)
                 }}
                 className={styles.input}
             />
