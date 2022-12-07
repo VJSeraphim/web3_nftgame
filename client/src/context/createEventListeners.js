@@ -15,5 +15,13 @@ export const createEventListeners = () => {
 
     AddNewEvent(NewPlayerEventFilter, provider, ({ args }) => {
         console.log('New Player Created!', args)
+
+        if(walletAddress === args.owner) {
+            setShowAlert({
+                status: true,
+                type: 'success',
+                message: "Player has been successfully registered."
+            })
+        }
     })
 }
