@@ -18,6 +18,7 @@ export const GlobalContextProvider = ({ children }) => {
     const [gameData, setGameData] = useState({
       players: [], pendingBattles: [], activeBattle: null
     })
+    const [updateGameData, setUpdateGameData] = useState(0)
 
     const updateCurrentWalletAddress = async () => {
         const accounts = await window.ethereum.request({
@@ -57,7 +58,8 @@ export const GlobalContextProvider = ({ children }) => {
           contract, 
           provider, 
           walletAddress,
-          setShowAlert
+          setShowAlert,
+          setUpdateGameData
         })
       }
     }, [contract])
