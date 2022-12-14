@@ -19,6 +19,7 @@ export const GlobalContextProvider = ({ children }) => {
       players: [], pendingBattles: [], activeBattle: null
     })
     const [updateGameData, setUpdateGameData] = useState(0)
+    const [battleGround, setBattleGround] = useState('bg-astral')
 
     const updateCurrentWalletAddress = async () => {
         const accounts = await window.ethereum.request({
@@ -102,7 +103,9 @@ export const GlobalContextProvider = ({ children }) => {
             setShowAlert,
             battleName,
             setBattleName,
-            gameData
+            gameData,
+            battleGround,
+            setBattleGround
         }}>
             {children}
         </GlobalContext.Provider>
