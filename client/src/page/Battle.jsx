@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import styles from '../styles'
-import { Alert } from '../components'
+import { Alert, ActionButton, Card, PlayerInfo, GameInfo } from '../components'
 import { useGlobalContext } from '../context'
 import { attack, attackSound, defense, defenseEound, player01 as player01icon, player02 as player02icon } from '.,/assets'
 import { playAudio } from '../utils.animation.js'
@@ -50,9 +50,37 @@ const Battle = () => {
 
     return (
         <div className={`${styles.flexBetween} ${styles.gameContainer} ${battleGround}`}>
-            <h1 className="text-xl text-white">
-                {battleName}
-            </h1>
+            {showAlert?.status && <Alert type={showAlert.type} message={showAlert.message} />}
+            <PlayerInfo player={player2} playerIcon={player02icon} mt />
+            <div className={`${styles.flexCenter} flex-col my-10`}>
+                <Card 
+                    card={player2}
+                    title={player2?.playerName}
+                    cardRef=''
+                    playerTwo
+                />
+
+                <div className="flex items-center flex-row">
+                    <ActionButton 
+                        imgUrl={attack}
+                        handleClick={() => {}}
+                        restStyles="mr-3 hover:border-yellow-400"
+                    />
+                    <Card 
+                        card={player1}
+                        title={player1?.playerName}
+                        cardRef=''
+                        restStyles="mt-3"
+                    />
+                    <ActionButton 
+                        imgUrl={defense}
+                        handleClick={() => {}}
+                        restStyles="ml-6 hover:border-red-500"
+                    />
+                </div>
+            </div>
+            <PlayerInfo player={player1} playerIcon={player01icon} mt/>
+            <GameInfo />
         </div>
     )
 }
