@@ -4,8 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import styles from '../styles'
 import { Alert, ActionButton, Card, PlayerInfo, GameInfo } from '../components'
 import { useGlobalContext } from '../context'
-import { attack, attackSound, defense, defenseEound, player01 as player01icon, player02 as player02icon } from '.,/assets'
-import { playAudio } from '../utils.animation.js'
+import { attack, attackSound, defense, defenseSound, player01 as player01icon, player02 as player02icon } from '../assets'
+import { playAudio } from '../utils/animation'
 
 const Battle = () => {
     const { contract, gameData, walletAddress, showAlert, setShowAlert, battleGround } = useGlobalContext()
