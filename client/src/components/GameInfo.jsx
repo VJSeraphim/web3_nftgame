@@ -48,6 +48,28 @@ const GameInfo = () => {
                             X
                         </div>
                     </div>
+                    <h3 className={styles.gameInfoHeading}>
+                        Game Rules:
+                    </h3>
+                    <div className="mt-3">
+                        {gameRules.map((rule, i) => (
+                            <p key={`game-rule-index`} className={styles.gameInfoText}>
+                                <span className="font-bold">
+                                    {index + 1}
+                                </span>
+                            </p>
+                        ))}
+                    </div>
+                </div>
+                <div className={`${styles.flexBetween} mt-10 gap-4 w-full`}>
+                    <CustomButton 
+                        title="Change Battleground"
+                        handleClick={() => navigate('/battleground')}
+                    />
+                    <CustomButton 
+                        title="Exit Battle"
+                        handleClick={handleBattleExit}
+                    />
                 </div>
             </div>
         </>
